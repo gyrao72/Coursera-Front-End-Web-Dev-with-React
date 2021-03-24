@@ -5,7 +5,6 @@ class DishDetail extends Component {
 
     renderComments(comments) {
         if (comments != null) {
-        let options = { year: "numeric", month: "short", day: "numeric" };
         return comments.map(comment => (
             <ul key={comment.id} className="list-unstyled">
                 <li className="mb-2">{comment.comment}</li>

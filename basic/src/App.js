@@ -1,5 +1,5 @@
 import { Navbar, NavbarBrand } from 'reactstrap';
-import './App.css';
+import Menu from './components/MenuComponent';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <NavbarBrand href="/">My Brand</NavbarBrand>
        </div>
        </Navbar>
+       <Menu />
     </div>
   );
 }

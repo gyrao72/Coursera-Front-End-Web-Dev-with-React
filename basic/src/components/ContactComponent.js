@@ -140,7 +140,7 @@ class Contact extends Component {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label htmlFor="latname" md={2}>Last Name</Label>
+                            <Label htmlFor="lastname" md={2}>Last Name</Label>
                             <Col md={10}>
                                 <Input type="text" id="lastname" name="lastname" placeholder="Last Name" 
                                     value={this.state.lastname} onChange={this.handleInputChange} 

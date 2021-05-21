@@ -18,8 +18,7 @@ class Contact extends Component {
     }
 
     handleSubmit(values){
-        console.log("Current state is:"+JSON.stringify(values));
-        alert("Current state is:"+JSON.stringify(values));
+        this.props.postFeedback( values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message );
         this.props.resetFeedbackForm();
     }
 
@@ -89,6 +88,7 @@ class Contact extends Component {
                                     <Errors className="text-danger" model=".firstname" show="touched"
                                     messages={{
                                         required:'Required',
+                                        show:"touched",
                                         minLength:' Must be greater than 2 characters',
                                         maxLength:" Must be less than 16 characters"
                                         }} 
@@ -110,6 +110,7 @@ class Contact extends Component {
                                     <Errors className="text-danger" model=".lastname" show="touched"
                                     messages={{
                                         required:'Required',
+                                        show:"touched",
                                         minLength:' Must be greater than 2 characters',
                                         maxLength:" Must be less than 16 characters"
                                         }} 
@@ -132,6 +133,7 @@ class Contact extends Component {
                                     <Errors className="text-danger" model=".telnum" show="touched"
                                     messages={{
                                         required:'Required',
+                                        show:"touched",
                                         minLength:' Enter 10 number',
                                         maxLength:" Enter 10 number",
                                         isNumber:' Enter only numbers'
@@ -153,6 +155,7 @@ class Contact extends Component {
                                     <Errors className="text-danger" model=".email" show="touched"
                                     messages={{
                                         required:'Required',
+                                        show:"touched",
                                         validEmail:" Invalid email address"
                                         }} 
                                     />

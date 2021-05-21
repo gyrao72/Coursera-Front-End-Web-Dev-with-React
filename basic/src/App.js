@@ -23,3 +23,6 @@ class App extends Component {
 }
 
 export default App;
+
+// npm i -g json-server
+// json-server --watch db.json -d 2000 -p 3001

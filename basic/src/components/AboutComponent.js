@@ -2,6 +2,8 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
+import { Loading } from './LodingComponent';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 function RenderLeader({leader}) {
@@ -9,7 +11,7 @@ function RenderLeader({leader}) {
         <div key={leader.id} className="col-12 mt-5">
             <Media tag="li">
                 <Media left middle>
-                    <Media object src={leader.image} alt={leader.name} />
+                    <Media object src={baseUrl+leader.image} alt={leader.name} />
                 </Media>
                 <Media body className="col-12">
                     <Media heading>{leader.name}</Media>
@@ -21,15 +23,25 @@ function RenderLeader({leader}) {
     );
 }
 
+function RenderContent({ leaders, isLoading, errMess }) {
+    if (isLoading) {
+        return <Loading />;
+    } else if (errMess) {
+        return <h4>{errMess}</h4>;
+    } else
+        return (
+            <Stagger in>
+                {leaders.map(leader => (
+                    <Fade in key={leader.id}>
+                        <RenderLeader key={leader.id} leader={leader} />
+                    </Fade>
+                ))}
+            </Stagger>
+        );
+}
+
 
 function About(props) {
-
-    const leaders = props.leaders.map((leader) => {
-        return (
-            <RenderLeader leader={leader} />
-        );
-    });
-
     return(
         <div className="container">
             <div className="row">
@@ -86,7 +98,11 @@ function About(props) {
                 </div>
                 <div className="col-12">
                     <Media list>
-                        {leaders}
+                        <RenderContent
+                                leaders={props.leaders}
+                                isLoading={props.leaderLoading}
+                                errMess={props.leaderErrMess}
+                            /> 
                     </Media>
                 </div>
             </div>
